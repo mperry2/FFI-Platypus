@@ -27,8 +27,8 @@ sub new
     exit 0;
   }
 
-  $args{c_source}             = 'xs';  
-  $args{include_dirs}         = 'include';
+  $args{c_source}             = [ 'xs', 'src/xs/libffi', 'src/xs/ffcall' ];
+  $args{include_dirs}         = [ 'include', 'src/xs/include' ];
   $args{extra_compiler_flags} = Alien::FFI->cflags;
   $args{extra_linker_flags}   = Alien::FFI->libs;
   $args{requires}->{'Math::Int64'} = '0.34' if $ENV{FFI_PLATYPUS_DEBUG_FAKE32} || $Config{uvsize} < 8;

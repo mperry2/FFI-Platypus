@@ -1,0 +1,49 @@
+
+[% FILTER myindent4('    ') %]
+{
+  const char *buffer;
+  size_t buffer_size;
+  ffi_pl_arguments *arguments;
+  int perl_index;
+  void **argument_pointers;
+  
+  buffer_size = sizeof(ffi_pl_argument) * self->nargs +
+                sizeof(void*) * self->nargs +
+                sizeof(ffi_pl_arguments);
+  Newx_or_alloca(buffer, buffer_size, char);
+  current_argv = arguments = (ffi_pl_arguments*) buffer;
+  
+  arguments->count = self->nargs;
+  argument_pointers = (void**) &arguments->slot[arguments->count];
+  
+  /*
+   * ARGUMENT IN
+   */
+  {
+    int c_index;
+    
+    for(c_index=0, perl_index=[% perl_argument_index_start %]; c_index < self->nargs; c_index++, perl_index++)
+    {
+      SV *sv = ST(perl_index);
+      
+      if(self->args[perl_index].platypus_type & FFI_PL_CUSTOM)
+      {
+        sv = ffi_pl_custom_perl(((ffi_pl_argument_libffi_custom*)self->args[perl_index].custom)->argument_in, sv, c_index);
+        if(sv == NULL)
+          continue;
+      }
+      
+      switch(self->args[perl_index].platypus_type & FFI_PL_SHAPE_MASK)
+      {
+        case FFI_PL_SCALAR:
+          break;
+        case FFI_PL_POINTER:
+          break;
+        case FFI_PL_ARRAY:
+          break;
+      }
+    }
+  }
+  
+}
+[% END %]

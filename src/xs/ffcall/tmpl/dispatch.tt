@@ -1,0 +1,6 @@
+
+[% FILTER myindent4('    ') %]
+{
+  /* Dispatch ffcall */
+}
+[% END %]

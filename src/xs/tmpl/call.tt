@@ -1,0 +1,39 @@
+#include "ffi_platypus_c.h"
+#include "ffi_platypus_xs.h"
+#include "ffi_platypus_[% impl %].h"
+
+XS(ffi_pl_[% impl %]_sub_call_xsub)
+{
+  dVAR; dXSARGS;
+  
+  {
+    ffi_pl_function *self;
+    self = (ffi_pl_function*) CvXSUBANY(cv).any_ptr;
+    
+    [%- INCLUDE dispatch.tt
+        perl_argument_index_start = 0
+    %]
+  }
+}
+
+XS(ffi_pl_[% impl %]_sub_call_function)
+{
+  dVAR; dXSARGS;
+  
+  if(items < 1)
+  {
+    croak_xs_usage(cv, "self, ...");
+  }
+  else
+  {
+    ffi_pl_function *self;
+    if(sv_isobject(ST(0)) && sv_derived_from(ST(0), "FFI::Platypus::[% impl %]::Function"))
+      self = INT2PTR(ffi_pl_function *, SvIV((SV*) SvRV(ST(0))));
+    else
+      croak("self is not of type FFI::Platypus::[% implt %]::Function");
+    
+    [%- INCLUDE dispatch.tt
+        perl_argument_index_start = 1
+    %]
+  }
+}
