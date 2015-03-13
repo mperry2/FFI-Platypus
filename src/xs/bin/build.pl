@@ -23,6 +23,16 @@ foreach my $impl (@impl)
   
   my $vars = {
     impl => $impl,
+    loc => {
+      filename => sub {
+        my($package, $filename, $line) = caller;
+        $filename;
+      },
+      line => sub {
+        my($package, $filename, $line) = caller;
+        $line;
+      },
+    },
   };
   
   my $from = $xs_root->file('tmpl','call.tt')->stringify;

@@ -2,6 +2,8 @@
 #include "ffi_platypus_xs.h"
 #include "ffi_platypus_ffcall.h"
 
+#line 5 "/home/ollisg/dev/FFI-Platypus/src/xs/tmpl/call.tt"
+
 XS(ffi_pl_ffcall_sub_call_xsub)
 {
   dVAR; dXSARGS;
@@ -16,6 +18,7 @@ XS(ffi_pl_ffcall_sub_call_xsub)
       /* Dispatch ffcall */
     }
 
+#line 18 "/home/ollisg/dev/FFI-Platypus/src/xs/tmpl/call.tt"
   }
 }
 
@@ -41,5 +44,6 @@ XS(ffi_pl_ffcall_sub_call_function)
       /* Dispatch ffcall */
     }
 
+#line 41 "/home/ollisg/dev/FFI-Platypus/src/xs/tmpl/call.tt"
   }
 }
