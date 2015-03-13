@@ -26,4 +26,6 @@ on 'configure' => sub {
 
 on 'develop' => sub {
   requires "Devel::PPPort" => "3.28";
+  requires "Path::Class" => "0";
+  requires "Template" => "0";
 };
