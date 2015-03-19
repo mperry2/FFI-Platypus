@@ -180,6 +180,10 @@ Set the L<lang|/lang> attribute.
 sub new
 {
   my($class, %args) = @_;
+  
+  require FFI::Platypus::Impl::libffi;
+  $class = 'FFI::Platypus::Impl::libffi';
+  
   my @lib;
   if(defined $args{lib})
   {

@@ -49,12 +49,21 @@ XS(ffi_pl_sub_call)
 int have_math_longdouble = -1;  /* Math::LongDouble */
 int have_math_complex    = -1;  /* Math::Complex    */
 
+extern XSUBADDR_t ffi_pl_libffi__Function__new;
+extern XSUBADDR_t ffi_pl_libffi__Function__call;
+extern XSUBADDR_t ffi_pl_libffi__Function__attach;
+extern XSUBADDR_t ffi_pl_libffi__Function__DESTROY;
+
 MODULE = FFI::Platypus PACKAGE = FFI::Platypus
 
 BOOT:
 #ifndef HAVE_IV_IS_64
     PERL_MATH_INT64_LOAD_OR_CROAK;
 #endif
+    newXS("FFI::Platypus::Impl::libffi::Function::new",     (XSUBADDR_t) ffi_pl_libffi__Function__new,       file);
+    newXS("FFI::Platypus::Impl::libffi::Function::call",    (XSUBADDR_t) ffi_pl_libffi__Function__call,      file);
+    newXS("FFI::Platypus::Impl::libffi::Function::attach",  (XSUBADDR_t) ffi_pl_libffi__Function__attach,    file);
+    newXS("FFI::Platypus::Impl::libffi::Function::DESTROY", (XSUBADDR_t) ffi_pl_libffi__Function__DESTROY,   file);
 
 int
 _have_math_longdouble(value = -2)

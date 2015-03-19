@@ -22,7 +22,7 @@ extern "C" {
 #define Safefree_or_alloca(ptr) Safefree(ptr)
 #endif
 
-SV*  ffi_pl_custom_perl(SV*,SV*,int);
+SV* ffi_pl_custom_perl(SV*,SV*,int);
 
 #ifdef __cplusplus
 }

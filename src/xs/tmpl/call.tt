@@ -16,7 +16,7 @@ XS(ffi_pl_[% impl %]_sub_call_xsub)
   }
 }
 
-XS(ffi_pl_[% impl %]_sub_call_function)
+XS(ffi_pl_[% impl %]__Function__call)
 {
   dVAR; dXSARGS;
   
@@ -27,10 +27,10 @@ XS(ffi_pl_[% impl %]_sub_call_function)
   else
   {
     ffi_pl_function *self;
-    if(sv_isobject(ST(0)) && sv_derived_from(ST(0), "FFI::Platypus::[% impl %]::Function"))
+    if(sv_isobject(ST(0)) && sv_derived_from(ST(0), "FFI::Platypus::Impl::[% impl %]::Function"))
       self = INT2PTR(ffi_pl_function *, SvIV((SV*) SvRV(ST(0))));
     else
-      croak("self is not of type FFI::Platypus::[% implt %]::Function");
+      croak("self is not of type FFI::Platypus::Impl::[% impl %]::Function");
     
     [%- INCLUDE dispatch.tt
         perl_argument_index_start = 1

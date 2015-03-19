@@ -70,7 +70,7 @@ XS(ffi_pl_libffi_sub_call_xsub)
   }
 }
 
-XS(ffi_pl_libffi_sub_call_function)
+XS(ffi_pl_libffi__Function__call)
 #line 1 "/home/ollisg/dev/FFI-Platypus/src/xs/tmpl/call.tt"
 {
   dVAR; dXSARGS;
@@ -82,11 +82,11 @@ XS(ffi_pl_libffi_sub_call_function)
   else
   {
     ffi_pl_function *self;
-    if(sv_isobject(ST(0)) && sv_derived_from(ST(0), "FFI::Platypus::libffi::Function"))
+    if(sv_isobject(ST(0)) && sv_derived_from(ST(0), "FFI::Platypus::Impl::libffi::Function"))
 #line 1 "/home/ollisg/dev/FFI-Platypus/src/xs/tmpl/call.tt"
       self = INT2PTR(ffi_pl_function *, SvIV((SV*) SvRV(ST(0))));
     else
-      croak("self is not of type FFI::Platypus::::Function");
+      croak("self is not of type FFI::Platypus::Impl::libffi::Function");
 #line 1 "/home/ollisg/dev/FFI-Platypus/src/xs/tmpl/call.tt"
     
 #line 1 "/home/ollisg/dev/FFI-Platypus/src/xs/libffi/tmpl/dispatch.tt"
