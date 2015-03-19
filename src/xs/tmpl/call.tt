@@ -2,8 +2,6 @@
 #include "ffi_platypus_xs.h"
 #include "ffi_platypus_[% impl %].h"
 
-#line [% loc.line %] "[% loc.filename %]"
-
 XS(ffi_pl_[% impl %]_sub_call_xsub)
 {
   dVAR; dXSARGS;
@@ -15,7 +13,6 @@ XS(ffi_pl_[% impl %]_sub_call_xsub)
     [%- INCLUDE dispatch.tt
         perl_argument_index_start = 0
     %]
-#line [% loc.line %] "[% loc.filename %]"
   }
 }
 
@@ -38,6 +35,5 @@ XS(ffi_pl_[% impl %]_sub_call_function)
     [%- INCLUDE dispatch.tt
         perl_argument_index_start = 1
     %]
-#line [% loc.line %] "[% loc.filename %]"
   }
 }
