@@ -19,7 +19,7 @@ install:
   - cpanm -n Devel::PPPort
   - cpanm -n local::lib
   # temp for t/zmq.t.  DO NOT MERGE
-  - cpanm -n AnyEvent EV
+  - cpanm -n AnyEvent EV ZMQ::FFI
 
 perl:
   - "5.8"
