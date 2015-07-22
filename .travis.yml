@@ -1,11 +1,15 @@
 language: perl
 
-before_install:
-  - sudo apt-get install gfortran
-  - sudo apt-get install fp-compiler-2.4.4
-  - sudo apt-get install g++
-  - sudo apt-get install gcj-jdk
-  - sudo apt-get install libgtop2-7
+addons:
+  apt:
+    packages:
+      - gfortran
+      - fp-compiler-2.4.4
+      - g++
+      - gcj-jdk
+      - libgtop2-7
+
+sudo: false
 
 install:
   - cpanm -n Alien::FFI
