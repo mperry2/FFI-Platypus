@@ -9,6 +9,7 @@ before_install:
   - sudo apt-get -y install g++
   - sudo apt-get -y install gcj-jdk
   - sudo apt-get -y install libgtop2-7
+  - sudo apt-get -y install libzmq3-dev
 
 install:
   - perlbrew list
