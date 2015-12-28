@@ -4,11 +4,11 @@ dist: trusty
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install gfortran-4.8
-  - sudo apt-get install fp-compiler-2.6.2
-  - sudo apt-get install g++
-  - sudo apt-get install gcj-jdk
-  - sudo apt-get install libgtop2-7
+  - sudo apt-get -y install gfortran-4.8
+  - sudo apt-get -y install fp-compiler-2.6.2
+  - sudo apt-get -y install g++
+  - sudo apt-get -y install gcj-jdk
+  - sudo apt-get -y install libgtop2-7
 
 install:
   - perlbrew list
