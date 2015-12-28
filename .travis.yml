@@ -1,16 +1,17 @@
 language: perl
-
-sudo: true
+sudo: required
+dist: trusty
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install gfortran-4.6
-  - sudo apt-get install fp-compiler-2.4.4
+  - sudo apt-get install gfortran-4.8
+  - sudo apt-get install fp-compiler-2.6.2
   - sudo apt-get install g++
   - sudo apt-get install gcj-jdk
   - sudo apt-get install libgtop2-7
 
 install:
+  - perlbrew list
   - cpanm -n constant
   - cpanm -n Alien::FFI
   - cpanm -n ExtUtils::CBuilder
