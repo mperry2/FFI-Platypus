@@ -19,14 +19,14 @@ if($skip)
 
 my $lib = tempdir( CLEANUP => 1 );
 
-my @cmd = ( 'cpanm', '-n', '-l' => $lib, '--installdeps', $module );
+my @cmd = ( 'cpanm', '-v', '-n', '-l' => $lib, '--installdeps', $module );
 
 print "+@cmd\n";
 system @cmd;
 exit 2 if $?;
 
 
-@cmd = ( 'cpanm', '-l' => $lib, '-v', '--reinstall', $module );
+@cmd = ( 'cpanm', '-v', '-l' => $lib, '-v', '--reinstall', $module );
 print "+@cmd\n";
 system @cmd;
 
