@@ -32,3 +32,4 @@ core
 *.pdb
 *.swp
 /share/config.json
+/libtest/rusty/target
