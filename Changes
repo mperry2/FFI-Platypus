@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Merge FFI::Platypus::Lang::Rust into this distribution
 
 0.47      2017-03-23 18:26:01 -0400
   - Fix installer bug where My::ShareConfig was accidentally declared as a
